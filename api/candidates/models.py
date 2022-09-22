@@ -5,15 +5,6 @@ from django.utils import timezone
 import os
 
 
-class Experience(models.Model):
-    organisation = models.CharField(max_length=64, null=False, blank=False)
-    designation = models.CharField(max_length=32, null=False, blank=False)
-    description = models.TextField()
-    current = models.BooleanField(null=False)
-    start = models.DateField(null=False, blank=False)
-    end = models.DateField(blank=True)
-
-
 def upload_to(instance, filename):
     now = timezone.now()
     base, extension = os.path.splitext(filename.lower())
@@ -26,10 +17,10 @@ class Candidate(models.Model):
     lastname = models.CharField(max_length=32, null=False, blank=False)
 
     IT = 'IT'
-    SALES = 'SL'
-    RECRUITING = 'RC'
-    ACCOUNTING = 'AC'
-    MATERIALS = 'MT'
+    SALES = 'Sales'
+    RECRUITING = 'Recruiting'
+    ACCOUNTING = 'Accounting'
+    MATERIALS = 'Materials'
     DEPARTMENT_CHOICES = [
         (IT, 'IT'),
         (SALES, 'Sales'),
@@ -38,31 +29,33 @@ class Candidate(models.Model):
         (MATERIALS, 'Materials'),
     ]
     department = models.CharField(
-        max_length=2, choices=DEPARTMENT_CHOICES, null=False, blank=False)
+        max_length=16, choices=DEPARTMENT_CHOICES, null=False, blank=False)
 
-    APPLIED = 0
-    REJECTED = 1
-    ACCEPTED = 2
+    APPLIED = 'Applied'
+    REJECTED = 'Rejected'
+    ACCEPTED = 'Accepted'
     STATUS_CHOICES = [
         (APPLIED, 'Applied'),
         (REJECTED, 'Rejected'),
         (ACCEPTED, 'Accepted'),
     ]
-    status = models.IntegerField(
-        choices=STATUS_CHOICES, null=False, blank=False)
+    status = models.CharField(
+        choices=STATUS_CHOICES, max_length=16, default='Applied', null=False, blank=False)
 
     phone = PhoneNumberField(null=False, blank=False, unique=True)
     email = models.EmailField(null=False, blank=False,)
 
-    experience_one = models.OneToOneField(
-        Experience, on_delete=models.CASCADE, null=True, blank=True, related_name='cand')
-    experience_two = models.OneToOneField(
-        Experience, on_delete=models.CASCADE, null=True, blank=True)
-
-    self_info = models.TextField()
+    self_info = models.TextField(null=False, blank=True)
     save_time = models.DateTimeField(auto_now_add=True)
     resume = models.FileField("resume",
                               upload_to=upload_to, max_length=255, null=True, blank=True)
+
+    organisation = models.CharField(max_length=64, null=True, blank=True)
+    designation = models.CharField(max_length=32, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    current = models.BooleanField(null=True, default=False)
+    start = models.DateField(null=True, blank=True)
+    end = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.firstname} {self.lastname}"

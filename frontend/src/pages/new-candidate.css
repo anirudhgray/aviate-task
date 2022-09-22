@@ -1,0 +1,15 @@
+input:not([type=checkbox]):not([type=file]),
+select,
+textarea {
+    width: 100%;
+    border: none;
+    padding: 0.3rem;
+    resize: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline-color: var(--light-purple);
+    outline-style: double
+}

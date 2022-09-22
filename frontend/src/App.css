@@ -4,6 +4,10 @@
   --bg: #f8f7fe;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 p,
 h1,
 h2,
@@ -21,6 +25,7 @@ h6 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   background: var(--light-purple);
+  border: none;
 }
 
 .button:hover {
