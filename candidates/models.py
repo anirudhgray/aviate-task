@@ -1,5 +1,8 @@
+from distutils.command.upload import upload
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
+from django.utils import timezone
+import os
 
 
 class Experience(models.Model):
@@ -9,6 +12,13 @@ class Experience(models.Model):
     current = models.BooleanField(null=False)
     start = models.DateField(null=False, blank=False)
     end = models.DateField(blank=True)
+
+
+def upload_to(instance, filename):
+    now = timezone.now()
+    base, extension = os.path.splitext(filename.lower())
+    milliseconds = now.microsecond // 1000
+    return f"resumes/{instance.pk}/{now:%Y%m%d%H%M%S}{milliseconds}{extension}"
 
 
 class Candidate(models.Model):
@@ -51,7 +61,8 @@ class Candidate(models.Model):
 
     self_info = models.TextField()
     save_time = models.DateTimeField(auto_now_add=True)
-    resume = models.BinaryField(editable=True)
+    resume = models.FileField("resume",
+                              upload_to=upload_to, max_length=255, null=True, blank=True)
 
     def __str__(self):
         return f"{self.firstname} {self.lastname}"
