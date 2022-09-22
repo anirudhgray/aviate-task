@@ -1,0 +1,45 @@
+:root {
+  --purple: #6D5ECB;
+  --light-purple: #8b8bfe;
+  --bg: #f8f7fe;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+.button {
+  text-decoration: none;
+  color: white;
+  padding: 0.4rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  background: var(--light-purple);
+}
+
+.button:hover {
+  background: var(--purple);
+}
+
+.link {
+  color: var(--light-purple);
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--purple);
+}
+
+.purple {
+  color: var(--purple)
+}
+
+.light-purple {
+  color: var(--light-purple)
+}

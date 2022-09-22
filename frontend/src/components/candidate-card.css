@@ -1,0 +1,28 @@
+.card:hover {
+    background: var(--light-purple) !important;
+    color: white;
+}
+
+.card:hover .light-purple {
+    color: var(--bg);
+}
+
+.tag {
+    margin-top: -0.9rem;
+    padding: 0.25rem;
+    padding-left: 0.45rem;
+    padding-right: 0.45rem;
+    color: var(--bg);
+}
+
+.applied {
+    background: var(--purple);
+}
+
+.accepted {
+    background: rgb(70, 205, 70);
+}
+
+.rejected {
+    background: rgb(255, 98, 98);
+}
