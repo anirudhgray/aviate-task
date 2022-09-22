@@ -18,6 +18,10 @@ h6 {
   margin: 0;
 }
 
+.link {
+  text-decoration: none;
+}
+
 .button {
   text-decoration: none;
   color: white;
@@ -30,6 +34,7 @@ h6 {
 
 .button:hover {
   background: var(--purple);
+  cursor: pointer;
 }
 
 .link {
@@ -47,4 +52,8 @@ h6 {
 
 .light-purple {
   color: var(--light-purple)
+}
+
+.black {
+  color: black;
 }

@@ -1,9 +1,9 @@
 .card:hover {
     background: var(--light-purple) !important;
-    color: white;
 }
 
-.card:hover .light-purple {
+.card:hover .light-purple,
+.card:hover .black {
     color: var(--bg);
 }
 

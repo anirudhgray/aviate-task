@@ -4,6 +4,7 @@ import './new-candidate.css'
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 import axios from '../axios'
+import { useNavigate } from 'react-router-dom'
 
 export default function NewCandidate() {
   const [phone, setPhone] = useState("")
@@ -12,7 +13,7 @@ export default function NewCandidate() {
   const [email, setEmail] = useState("")
   const [selfInfo, setSelfInfo] = useState("")
   const [desc, setDesc] = useState("")
-  const [organisation, setOrganisation] = useState("IT")
+  const [organisation, setOrganisation] = useState("")
   const [designation, setDesignation] = useState("")
   const [from, setFrom] = useState("")
   const [till, setTill] = useState("")
@@ -27,6 +28,8 @@ export default function NewCandidate() {
   const [uniEnd, setUniEnd] = useState("")
 
   const [page, setPage] = useState(0)
+
+  const navigate = useNavigate()
 
   const submit = async (e) => {
     e.preventDefault()
@@ -55,7 +58,10 @@ export default function NewCandidate() {
       formData.append('uniEnd', uniEnd)
 
       try {
-        await axios.post('/candidates/', formData)
+        const res = await axios.post('/candidates/', formData)
+        if (res) {
+          navigate('/')
+        }
       } catch (error) {
         console.log(error)
       }
@@ -87,7 +93,7 @@ export default function NewCandidate() {
             <option value="Sales">Sales</option>
             <option value="Recruiting">Recruiting</option>
             <option value="Accounting">Accounting</option>
-            <option value="Marketing">Marketing</option>
+            <option value="Materials">Materials</option>
           </select>
           </span>
           <span>

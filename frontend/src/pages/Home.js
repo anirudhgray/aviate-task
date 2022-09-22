@@ -27,7 +27,7 @@ export default function Home() {
       <div className='mt-6 mb-4 flex flex-column gap-5'>
         {candidates.map((candidate, index) => {
           return (
-            <CandidateCard key={index} status={candidate.status} firstname={candidate.firstname} lastname={candidate.lastname} department={candidate.department} save_time={candidate.save_time} />
+            <CandidateCard key={index} id={candidate.id} status={candidate.status} firstname={candidate.firstname} lastname={candidate.lastname} department={candidate.department} save_time={candidate.save_time} />
           )
         })}
       </div>
