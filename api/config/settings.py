@@ -34,7 +34,6 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
-    'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
     'candidates',
