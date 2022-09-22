@@ -18,7 +18,7 @@ export default function NewCandidate() {
   const [from, setFrom] = useState("")
   const [till, setTill] = useState("")
   const [current, setCurrent] = useState(false)
-  const [department, setDepartment] = useState("")
+  const [department, setDepartment] = useState("IT")
   const [resume, setResume] = useState("")
   const [university, setUniversity] = useState("")
   const [degree, setDegree] = useState("")
@@ -54,8 +54,8 @@ export default function NewCandidate() {
       formData.append('degree', degree)
       formData.append('course', course)
       formData.append('cgpa', cgpa)
-      formData.append('uniStart', uniStart)
-      formData.append('uniEnd', uniEnd)
+      formData.append('uni_start', uniStart)
+      formData.append('uni_end', uniEnd)
 
       try {
         const res = await axios.post('/candidates/', formData)

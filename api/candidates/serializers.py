@@ -7,4 +7,4 @@ class CandidateSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Candidate
         fields = ('id', 'firstname', 'lastname', 'department', 'status', 'phone', 'email',
-                  'organisation', 'designation', 'description', 'current', 'start', 'end', 'self_info', 'save_time', 'resume')
+                  'organisation', 'designation', 'description', 'current', 'start', 'end', 'self_info', 'save_time', 'resume', 'university', 'uni_start', 'uni_end', 'cgpa', 'degree', 'course')

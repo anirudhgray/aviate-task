@@ -45,6 +45,12 @@ export default function Candidate() {
         setCurrent(res.data.current)
         setResume(res.data.resume)
         setStatus(res.data.status)
+        setUniversity(res.data.university)
+        setUniEnd(res.data.uni_end)
+        setUniStart(res.data.uni_start)
+        setDegree(res.data.degree)
+        setCourse(res.data.course)
+        setCgpa(res.data.cgpa)
       } catch (error) {
         console.log(error)
       }

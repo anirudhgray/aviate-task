@@ -57,5 +57,12 @@ class Candidate(models.Model):
     start = models.DateField(null=True, blank=True)
     end = models.DateField(blank=True, null=True)
 
+    university = models.CharField(max_length=64, null=True, blank=True)
+    degree = models.CharField(max_length=32, null=True, blank=True)
+    course = models.CharField(max_length=32, null=True, blank=True)
+    cgpa = models.CharField(max_length=5, null=True, blank=True)
+    uni_start = models.DateField(null=True, blank=True)
+    uni_end = models.DateField(blank=True, null=True)
+
     def __str__(self):
         return f"{self.firstname} {self.lastname}"
