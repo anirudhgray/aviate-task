@@ -9,6 +9,7 @@ export default function Home() {
   const [allCandidates, setAllCandidates] = useState([])
   const [status, setStatus] = useState("")
   const [department, setDepartment] = useState("")
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchCandidates = async () => {
@@ -19,6 +20,7 @@ export default function Home() {
       } catch (error) {
         console.log(error)
       }
+      setLoading(false)
     }
     fetchCandidates()
   }, [])
@@ -68,11 +70,15 @@ export default function Home() {
         </span>
       </div>
       <div className='mt-6 mb-4 flex flex-column gap-5'>
-        {candidates.length ? candidates.map((candidate, index) => {
+        {!loading ? (candidates.length ? candidates.map((candidate, index) => {
           return (
             <CandidateCard key={index} id={candidate.id} status={candidate.status} firstname={candidate.firstname} lastname={candidate.lastname} department={candidate.department} save_time={candidate.save_time} />
           )
-        }) : <p>No candidates found. Try with different filtering?</p>}
+        }) : <p className='light-purple'>No candidates found. Try with different filtering?</p>) : (
+          <div>
+            <p className='light-purple'>Loading candidates...</p>
+          </div>
+        )}
       </div>
       <Link to='/new' className='bottom-0 right-0 add-button button fixed'>Add New</Link>
     </Layout>

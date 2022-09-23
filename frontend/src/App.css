@@ -57,3 +57,7 @@ h6 {
 .black {
   color: black;
 }
+
+.disabled-button {
+  opacity: 0.5;
+}
