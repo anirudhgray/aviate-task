@@ -29,6 +29,7 @@ export default function Candidate() {
 
   const [loading, setLoading] = useState(true)
   const [changeLoading, setChangeLoading] = useState(false)
+  const [notFound, setNotFound] = useState(false)
 
   useEffect(() => {
     const fetchCandidate = async () => {
@@ -54,10 +55,13 @@ export default function Candidate() {
         setDegree(res.data.degree)
         setCourse(res.data.course)
         setCgpa(res.data.cgpa)
+        setLoading(false)
       } catch (error) {
         console.log(error)
+        if (error.response.status === 404) {
+          setNotFound(true)
+        }
       }
-      setLoading(false)
     }
     fetchCandidate()
   }, [id])
@@ -131,6 +135,8 @@ export default function Candidate() {
           )}
         </div>
         </div>
+      ) : notFound ? (
+        <p>Candidate not found.</p>
       ) : (
         <p>Loading...</p>
       )}
